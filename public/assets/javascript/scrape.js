@@ -1,21 +1,21 @@
-// ----- Grab Reviews
+// Grab Articles
 
 $(document).ready(() => {
 
-    // ----- Event handlers
-    $(document).on("click", "#clear", deleteReview);
-    $(document).on("click", ".scrape-new", scrapeReview);
+    // Event handlers
+    $(document).on("click", "#clear", deleteArticle);
+    $(document).on("click", ".scrape-new", scrapeArticle);
 
     $(".save").on("click", function () {
         var thisId = $(this).attr("data-id");
         // console.log(thisId);
-        saveReview(thisId);
+        saveArticle(thisId);
     });
 
     $(".delete").on("click", function () {
         var thisId = $(this).attr("data-id");
         // console.log(thisId);
-        delSelectedReview(thisId);
+        delSelectedArticle(thisId);
     });
 
     $(".notesave").on("click", function () {
@@ -30,26 +30,26 @@ $(document).ready(() => {
 
     $(document).on('click', '.deleteNote', function () {
         var noteId = $(this).attr("data-note-id");
-        var reviewId = $(this).attr("data-review-id");
+        var articleId = $(this).attr("data-article-id");
         console.log(noteId);
-        console.log(reviewId);
-        noteDelete(noteId, reviewId)
+        console.log(articleId);
+        noteDelete(noteId, articleId)
     });
 
-    // ----- Delete Review
-    function deleteReview(event) {
+    // Delete Article
+    function deleteArticle(event) {
         event.stopPropagation();
 
         $.ajax({
             method: "DELETE",
-            url: "/api/reviews"
+            url: "/api/articles"
         }).done(function (data) {
             window.location = "/"
         })
     };
 
-    // ----- Scrape Review
-    function scrapeReview(event) {
+    // Scrape Article
+    function scrapeArticle(event) {
         event.stopPropagation();
 
         $.ajax({
@@ -60,31 +60,31 @@ $(document).ready(() => {
         })
     };
 
-    // ----- Save Review
-    function saveReview(data) {
+    // Save Article
+    function saveArticle(data) {
         // console.log(data);
         $.ajax({
             method: "POST",
-            url: "/api/reviews/" + data,
+            url: "/api/articles/" + data,
             data: data
         }).done(function () {
             window.location = "/";
         })
     };
 
-    // ----- Delete Selected Saved Review
-    function delSelectedReview(data) {
+    // Delete Selected Saved Articles
+    function delSelectedArticle(data) {
         // console.log(data);
         $.ajax({
             method: "DELETE",
-            url: "/api/reviews/" + data,
+            url: "/api/Articles/" + data,
             data: data
         }).done(function () {
             window.location = "/saved";
         })
     };
 
-    // ----- Adding Notes
+    // Adding Notes
     function noteAdd(data) {
         $.ajax({
             method: "POST",
@@ -100,11 +100,11 @@ $(document).ready(() => {
         });
     };
 
-    // ----- Delete a note
-    function noteDelete(noteId, reviewId) {
+    // Delete a note
+    function noteDelete(noteId, articleId) {
         $.ajax({
             method: "DELETE",
-            url: "/api/notes/" + noteId + "/" + reviewId
+            url: "/api/notes/" + noteId + "/" + articleId
         }).done(function (data) {
             console.log(data)
             $(".modalNote").modal("hide");

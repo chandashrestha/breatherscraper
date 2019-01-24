@@ -11,14 +11,14 @@
                 </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/saved">Saved Reviews
+                <a class="nav-link" href="/saved">Saved articles
                 </a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-danger scrape-new mx-5">SCRAPE NEW REVIEWS!</a>
+                <a class="btn btn-danger scrape-new mx-5">SCRAPE NEW articles!</a>
             </li>
             <li class="nav-item">
-                <a id="clear" class="btn btn-danger clear">CLEAR REVIEWS!</a>
+                <a id="clear" class="btn btn-danger clear">CLEAR articleS!</a>
             </li>
         </ul>
     </div>
@@ -31,16 +31,16 @@
         </div>
         <div class="caption">
             <h1>BreatherScraper</h1>
-            <h3>CNET Tech Reviews!</h3>
+            <h3>The Himalayan Times articles!</h3>
         </div>
     </div>
-    <div class="container-fluid review-container">
-        {{#if review}}
-        {{#each review}}
+    <div class="container-fluid article-container">
+        {{#if article}}
+        {{#each article}}
         <div class="card">
             <div class="card-header bg-primary">
-                <h3><a class="review-link text-white" target="_blank" rel="noopener noreferrer" href="https://www.cnet.com{{this.link}}">{{this.title}}</a>
-                    <a class="btn btn-danger delete float-right" data-id={{this._id}}>Delete Review</a>
+                <h3><a class="article-link text-white" target="_blank" rel="noopener noreferrer" href="https://www.cnet.com{{this.link}}">{{this.title}}</a>
+                    <a class="btn btn-danger delete float-right" data-id={{this._id}}>Delete article</a>
                     <!-- Trigger the modal with a button -->
                     <button type="button" class="btn btn-success noteadd float-right mr-5" data-toggle="modal"
                         data-target="#noteModal{{this._id}}" data-id={{this._id}}>Note</button>
@@ -51,8 +51,8 @@
         {{/each}}
         {{else}}
         <div class="panel panel-default">
-            <div id="noreview" class="alert alert-warning text-center">
-                <h4>No Reviews</h4>
+            <div id="noarticle" class="alert alert-warning text-center">
+                <h4>No articles</h4>
             </div>
         </div>
         {{/if}}
@@ -63,17 +63,17 @@
                 <h3></h3>
             </div>
             <div class="card-body text-center">
-                <h4><a href="/">Browse Reviews</a></h4>
+                <h4><a href="/">Browse articles</a></h4>
             </div>
         </div>
     </div>
 </div>
 <!--Modal for notes-->
-{{#each review}}
+{{#each article}}
 {{> notes-modal }}
 {{/each}}
 <footer class="footer">
     <div class="container">
-        <p>CNET Tech Reviews</p>
+        <p>The Himalayan Times articles</p>
     </div>
 </footer>

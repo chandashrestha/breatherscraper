@@ -1,20 +1,20 @@
 # Breatherscraper 
 
-[Check the app](link)
+[Check the app](https://breatherscraper.herokuapp.com/)
 
 ## Project Brief
 
-A Tech Review site which scrapes review from CNET.com.
+A news site which scrapes from https://thehimalayantimes.com/
 
 ### MVP:
 
-1. User can scrape new Hot Products from CNET with a click of a button.
+1. User can scrape news from Himalayan Times with a click of a button.
 
-2. User can save a product from that was just scraped and it will be stored for later visit.
+2. User can save an article from that was just scraped and it will be stored for later visit.
 
-3. User can add notes in their Saved product.
+3. User can add comments to the scraped article.
 
-4. User can click on a product name and the page will direct them to the original CNET review page
+4. User can click on an article title and the page will direct them to the original Himalayan Times page.
 
 ## Technologies Used: 
   

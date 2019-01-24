@@ -1,30 +1,30 @@
 module.exports = function(app, db, axios, cheerio) {
-  // ----- Load Index Page
+  // Load Index Page
   app.get("/", (req, res) => {
-    db.Review.find({ isSaved: false })
+    db.Article.find({ isSaved: false })
       .limit(12)
       .exec(function(error, data) {
-        var reviewObject = {
-          review: data
+        var articleObject = {
+          article: data
         };
-        console.log(reviewObject);
-        res.render("index", reviewObject);
+        console.log(articleObject);
+        res.render("index", articleObject);
       });
   });
 
-  // ----- Load Saved Page
+  // Load Saved Page
   app.get("/saved", function(req, res) {
-    db.Review.find({ isSaved: true })
+    db.Article.find({ isSaved: true })
       .populate("notes")
       .exec(function(error, data) {
-        var reviewObject = {
-          review: data
+        var articleObject = {
+          article: data
         };
-        res.render("saved", reviewObject);
+        res.render("saved", articleObject);
       });
   });
 
-  // ----- Scraping contents
+  // Scraping contents
   app.get("/scrape", (req, res) => {
     var results = [];
     axios
@@ -49,19 +49,17 @@ module.exports = function(app, db, axios, cheerio) {
             .children("a")
             .attr("href")
             .trim();
+            console.log(result);
 
-          results.push(result);
-
-          //   db.Review.create(result).then(function(err, dbReview) {
-          //     if (err) {
-          //       console.log(err);
-          //     } else {
-          //       console.log(dbReview);
-          //     }
-          //   });
+        //   let newArticle = new db.Article({
+        //     title: result.title,
+        //     description: result.description,
+        //     link: result.link
+        //   });
+        //   newArticle.save();
         });
         console.log(results);
-        // ----- Send a message to the client
+        // Send a message to the client
         res.send("Scrape Complete");
       })
       .catch(err => {

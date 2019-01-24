@@ -33,14 +33,16 @@ app.engine(
 app.set("view engine", "hbs");
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/HimalayanTimes";
-mongoose.connect(MONGODB_URI);
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/HimalayanTimes";
+mongoose.connect(MONGODB_URI,{useNewUrlParser:true}).then(()=>{
+    console.log("Connected to Mongo!!");
+});
 
-// ----- Routes
+// Routes
 require("./routes/apiRoutes")(app, db, axios, cheerio);
 require("./routes/viewRoutes")(app, db, axios, cheerio);
 
-// ----- PORT listening
+// PORT listening
 app.listen(PORT, function () {
     console.log("http://localhost:3000/");
 });

@@ -11,13 +11,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/saved">Saved Reviews</a>
+                <a class="nav-link" href="/saved">Saved Articles</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-danger scrape-new mx-5">SCRAPE NEW REVIEWS!</a>
+                <a class="btn btn-danger scrape-new mx-5">SCRAPE NEW Articles!</a>
             </li>
             <li class="nav-item">
-                <a id="clear" class="btn btn-danger clear">CLEAR REVIEWS!</a>
+                <a id="clear" class="btn btn-danger clear">CLEAR Articles!</a>
             </li>
         </ul>
     </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="caption">
             <h1>BreatherScraper</h1>
-            <h3>CNET Tech Reviews</h3>
+            <h3>Articles</h3>
         </div>
     </div>
     <div class="container-fluid review-container">
@@ -38,9 +38,9 @@
         {{#each review}}
         <div class="card">
             <div class="card-header bg-primary">
-                <h3><a class="review-link text-white" target="_blank" rel="noopener noreferrer" href="https://www.cnet.com{{this.link}}">{{this.title}}</a><a
+                <h3><a class="review-link text-white" target="_blank" rel="noopener noreferrer" href="https://thehimalayantimes.com/{{this.link}}">{{this.title}}</a><a
                         class="btn btn-success save float-right" data-id={{this._id}}>Save
-                        Review</a></h3>
+                        Articles</a></h3>
             </div>
             <div class="card-body">{{this.brief}}</div>
         </div>
@@ -48,7 +48,7 @@
         {{else}}
         <div class="panel panel-default">
             <div id="noreview" class="alert alert-warning text-center">
-                <h4>No reviews</h4>
+                <h4>No Articles</h4>
             </div>
         </div>
         {{/if}}
@@ -56,17 +56,17 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header text-center">
-                <h3>What Would You Like To Do?</h3>
+                <h3>Click Scrape to get more Articles</h3>
             </div>
             <div class="card-body text-center">
-                <h4><a href="#" class="scrape-new">New Reviews</a></h4>
-                <h4><a href="/saved">Saved Reviews</a></h4>
+                <h4><a href="#" class="scrape-new">New Article</a></h4>
+                <h4><a href="/saved">Saved Article</a></h4>
             </div>
         </div>
     </div>
 </div>
 <footer class="footer">
     <div class="container">
-        <p>CNET Tech Reviews</p>
+        <p>The Himalayan Times News</p>
     </div>
 </footer>
