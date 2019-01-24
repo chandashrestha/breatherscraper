@@ -1,3 +1,13 @@
 .backy {
     background-color: hotpink;
 }
+.button {
+    background-color: lightblue;
+}
+body{
+background-image: url("/assets/images/news\ \(1\).jpg");
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
