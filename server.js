@@ -1,4 +1,4 @@
-// ----- Importing all Dependancies
+// To import dependencies
 var express = require("express");
 var exphbs = require("express-handlebars");
 var logger = require("morgan");
@@ -7,7 +7,7 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var path = require('path');
 
-// ----- Importing all modesl
+// Import models
 var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// ----- Handlebars
+// Handlebars
 app.engine(
     "hbs",
     exphbs({
@@ -32,8 +32,8 @@ app.engine(
 );
 app.set("view engine", "hbs");
 
-// ----- If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scavangerOfReviews";
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/HimalayanTimes";
 mongoose.connect(MONGODB_URI);
 
 // ----- Routes
