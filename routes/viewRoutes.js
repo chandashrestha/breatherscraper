@@ -1,7 +1,7 @@
 module.exports = function(app, db, axios, cheerio) {
   // Load Index Page
   app.get("/", (req, res) => {
-    db.Article.find({ isSaved: false })
+    db.Article.find()
       .limit(12)
       .exec(function(error, data) {
         var articleObject = {
@@ -32,35 +32,40 @@ module.exports = function(app, db, axios, cheerio) {
       .then(function(response) {
         var $ = cheerio.load(response.data);
 
-        $("li").each(function() {
+        $("div.wp-caption").each(function() {
           var result = {};
 
           result.title = $(this)
+            .parent()
             .children("h4")
             .children("a")
             .text()
             .trim();
           result.description = $(this)
+            .parent()
             .children("p")
             .text()
             .trim();
           result.link = $(this)
+            .parent()
             .children("h4")
             .children("a")
             .attr("href")
             .trim();
-            console.log(result);
+        //   console.log(result);
 
-        //   let newArticle = new db.Article({
-        //     title: result.title,
-        //     description: result.description,
-        //     link: result.link
-        //   });
-        //   newArticle.save();
+            let newArticle = new db.Article({
+              title: result.title,
+              description: result.description,
+              link: result.link
+            });
+            newArticle.save();
         });
-        console.log(results);
+        // console.log(results);
         // Send a message to the client
-        res.send("Scrape Complete");
+        
+        return res.redirect("/");
+        
       })
       .catch(err => {
         console.log(err);

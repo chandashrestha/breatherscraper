@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark backy">
     <a class="navbar-brand" href="/">BreatherScraper</a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@
                 <a class="nav-link" href="/saved">Saved Articles</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-danger scrape-new mx-5">SCRAPE NEW Articles!</a>
+                <a class="btn btn-danger scrape-new mx-5">SCRAPE New Articles!</a>
             </li>
             <li class="nav-item">
                 <a id="clear" class="btn btn-danger clear">CLEAR Articles!</a>
@@ -33,21 +33,21 @@
             <h3>Articles</h3>
         </div>
     </div>
-    <div class="container-fluid review-container">
-        {{#if review}}
-        {{#each review}}
+    <div class="container-fluid article-container">
+        {{#if article}}
+        {{#each article}}
         <div class="card">
-            <div class="card-header bg-primary">
-                <h3><a class="review-link text-white" target="_blank" rel="noopener noreferrer" href="https://thehimalayantimes.com/{{this.link}}">{{this.title}}</a><a
+            <div class="card-header backy">
+                <h3><a class="article-link text-white" target="_blank" rel="noopener noreferrer" href="{{this.link}}">{{this.title}}</a><a
                         class="btn btn-success save float-right" data-id={{this._id}}>Save
                         Articles</a></h3>
             </div>
-            <div class="card-body">{{this.brief}}</div>
+            <div class="card-body">{{this.description}}</div>
         </div>
         {{/each}}
         {{else}}
         <div class="panel panel-default">
-            <div id="noreview" class="alert alert-warning text-center">
+            <div id="noarticle" class="alert alert-warning text-center">
                 <h4>No Articles</h4>
             </div>
         </div>
